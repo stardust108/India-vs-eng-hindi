@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nishkarsh</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="//content.jwplatform.com/libraries/SAHhwvZq.js"></script>
+  <script disable-devtool-auto src="https://cdn.jsdelivr.net/npm/disable-devtool"></script>
+
+  <style>
+    /* Smooth page load animation */
+    body {
+      margin: 0;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(45deg, #ff9a9e, #fad0c4, #ffdde1);
+      color: #333;
+      text-align: center;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    /* Fade-in animation */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* JWPlayer container */
+    #jwplayerDiv {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: 30px auto;
+      z-index: 1;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      background-color: #fff;
+      transform: scale(0.9);
+      animation: scaleUp 1s ease-in-out forwards;
+    }
+
+    /* Scale-up animation */
+    @keyframes scaleUp {
+      to { transform: scale(1); }
+    }
+
+    /* Buttons with hover effects */
+    .btn-container {
+      margin-top: 20px;
+    }
+
+    .btn {
+      padding: 15px 30px;
+      margin: 10px;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      background: linear-gradient(135deg, #ff7e5f, #feb47b);
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Button ripple effect */
+    .btn:after {
+      content: "";
+      position: absolute;
+      width: 300%;
+      height: 300%;
+      top: 50%;
+      left: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transition: all 0.6s ease;
+      transform: translate(-50%, -50%) scale(0);
+      border-radius: 50%;
+    }
+
+    .btn:hover {
+      background: linear-gradient(135deg, #ff6a5f, #fd8e5e);
+      transform: scale(1.05);
+    }
+
+    .btn:active:after {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0;
+    }
+
+    /* Telegram Strip */
+    .telegram-strip {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: linear-gradient(135deg, #ff7e5f, #feb47b);
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 18px;
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+      transform: translateY(100%);
+      animation: slideUp 1s ease-in-out forwards 1.5s;
+    }
+
+    /* Slide up animation */
+    @keyframes slideUp {
+      to { transform: translateY(0); }
+    }
+
+    .telegram-strip a {
+      margin-left: 10px;
+      padding: 10px 20px;
+      background: white;
+      color: #ff7e5f;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+
+    .telegram-strip a:hover {
+      background: #f0f0f0;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div id="jwplayerDiv"></div>
+
+  <script>
+    // Set up the JWPlayer with a default channel
+    jwplayer("jwplayerDiv").setup({
+      file: "https://jcevents.jiocinema.com/bpk-tv/JC_ColorsCineplexHD/JCHLS/hdntl=exp=1739428832~acl=%2f*~id=1acd007748ec1f80292d0a7d5e128f5f~data=hdntl~hmac=697723bf7c0cdc7361bcdc9d218bf7d0d59d2c388cca7a9cacc98f1328668d0b/index.m3u8",
+      autostart: true,
+      controls: true,
+      width: "100%",
+      aspectratio: "16:9"
+    });
+
+    // Function to change the video when a button is clicked
+    function changeVideo(url) {
+      jwplayer("jwplayerDiv").load({
+        file: url
+      });
+      jwplayer("jwplayerDiv").play();
+    }
+  </script>
+
+  <!-- Buttons for channel selection -->
+  <div class="btn-container">
+    <button class="btn" onclick="changeVideo('https://jcevents.jiocinema.com/bpk-tv/JC_ColorsCineplexHD/JCHLS/hdntl=exp=1739428832~acl=%2f*~id=1acd007748ec1f80292d0a7d5e128f5f~data=hdntl~hmac=697723bf7c0cdc7361bcdc9d218bf7d0d59d2c388cca7a9cacc98f1328668d0b/index.m3u8')">Play Cineplex Hindi HD</button>
+    <button class="btn" onclick="changeVideo('https://jcevents.jiocinema.com/bpk-tv/JC_Sports18_1HD/JCHLS/hdntl=exp=1739428832~acl=%2f*~id=1acd007748ec1f80292d0a7d5e128f5f~data=hdntl~hmac=697723bf7c0cdc7361bcdc9d218bf7d0d59d2c388cca7a9cacc98f1328668d0b/index.m3u8')">Play Sport 18 Hindi</button>
+    <button class="btn" onclick="changeVideo('https://jcevents.jiocinema.com/bpk-tv/JC_Sports18_1HD/JCHLS/hdntl=exp=1739428809~acl=%2f*~id=1acd007748ec1f80292d0a7d5e128f5f~data=hdntl~hmac=a6f155f1f25a75e7c5bc0f2b6832cd31e36cedd9303378fcab5dca05f327a943/index.m3u8')">Play Sport 18 Hindi IOS</button>
+  </div>
+
+  <!-- Telegram Join Strip -->
+  <div class="telegram-strip">
+    📢 Join our Telegram for Live Updates!
+    <a href="https://t.me/+bdfr3H7NBwwyZDZl" target="_blank">Join Now</a>
+  </div>
+
+</body>
+</html>
